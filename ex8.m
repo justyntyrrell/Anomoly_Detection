@@ -1,27 +1,8 @@
-%% Machine Learning Online Class
-%  Exercise 8 | Anomaly Detection and Collaborative Filtering
-%
-%  Instructions
-%  ------------
-%
-%  This file contains code that helps you get started on the
-%  exercise. You will need to complete the following functions:
-%
-%     estimateGaussian.m
-%     selectThreshold.m
-%     cofiCostFunc.m
-%
-%  For this exercise, you will not need to change any code in this file,
-%  or any other files other than those mentioned above.
-%
 
 %% Initialization
 clear ; close all; clc
 
 %% ================== Part 1: Load Example Dataset  ===================
-%  We start this exercise by using a small dataset that is easy to
-%  visualize.
-%
 %  Our example case consists of 2 network server statistics across
 %  several machines: the latency and throughput of each machine.
 %  This exercise will help us find possibly faulty (or very fast) machines.
@@ -44,7 +25,7 @@ pause
 
 
 %% ================== Part 2: Estimate the dataset statistics ===================
-%  For this exercise, we assume a Gaussian distribution for the dataset.
+%  assume a Gaussian distribution for the dataset.
 %
 %  We first estimate the parameters of our assumed Gaussian distribution, 
 %  then compute the probabilities for each of the points and then visualize 
@@ -69,7 +50,7 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 %% ================== Part 3: Find Outliers ===================
-%  Now you will find a good epsilon threshold using a cross-validation set
+%  Find a good epsilon threshold using a cross-validation set
 %  probabilities given the estimated Gaussian distribution
 % 
 
@@ -93,7 +74,6 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 %% ================== Part 4: Multidimensional Outliers ===================
-%  We will now use the code from the previous part and apply it to a 
 %  harder problem in which more features describe each datapoint and only 
 %  some features indicate whether a point is an outlier.
 %
