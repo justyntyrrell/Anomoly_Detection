@@ -13,7 +13,7 @@ F1 = 0;
 %Choose stepsize for incrementing  
 stepsize = (max(pval) - min(pval)) / 1000;
 
-%Loop through each epsilon
+%Loop through each epsilon to calculate each F Score
 for epsilon = min(pval):stepsize:max(pval)
     
     %find cross validation predictions. Any probability in pval less then epsilon labeled as an anomaly
@@ -34,16 +34,6 @@ for epsilon = min(pval):stepsize:max(pval)
     
     %calculate F1 score
     F1 = (2 * prec * rec) / (prec + rec);
-    
-    % ====================== YOUR CODE HERE ======================
-    % Instructions: Compute the F1 score of choosing epsilon as the
-    %               threshold and place the value in F1. The code at the
-    %               end of the loop will compare the F1 score for this
-    %               choice of epsilon and set it to be the best epsilon if
-    %               it is better than the current choice of epsilon.
-    %               
-    % Note: You can use predictions = (pval < epsilon) to get a binary vector
-    %       of 0's and 1's of the outlier predictions
     
     % update epsilon based on F1 score
     if F1 > bestF1
