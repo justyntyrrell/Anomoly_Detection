@@ -10,15 +10,29 @@ bestEpsilon = 0;
 bestF1 = 0;
 F1 = 0;
 
+%Choose stepsize for incrementing  
 stepsize = (max(pval) - min(pval)) / 1000;
+
+%Loop through each epsilon
 for epsilon = min(pval):stepsize:max(pval)
+    
+    %find cross validation predictions. Any 
     cvprediction = pval < epsilon;
+    
+    %calculate true positives
     tp = sum(cvprediction == yval & yval == 1);
+    %calculate false positives
     fp = sum(cvprediction = not(yval) & cvprediction == 1);
+    %Calculate false negatives
     fn = sum(cvprediction = not(yval) & yval == 1);
     
+    %calculate precicsion
     prec = tp / (tp + fp);
+    
+    %calculate recall
     rec = tp / (tp + fn);
+    
+    %calculate F1 score
     F1 = (2 * prec * rec) / (prec + rec);
     
     % ====================== YOUR CODE HERE ======================
@@ -30,21 +44,8 @@ for epsilon = min(pval):stepsize:max(pval)
     %               
     % Note: You can use predictions = (pval < epsilon) to get a binary vector
     %       of 0's and 1's of the outlier predictions
-
-
-
-
-
-
-
-
-
-
-
-
-
-    % =============================================================
-
+    
+    % update epsilon based on F1 score
     if F1 > bestF1
        bestF1 = F1;
        bestEpsilon = epsilon;
