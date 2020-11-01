@@ -16,7 +16,7 @@ stepsize = (max(pval) - min(pval)) / 1000;
 %Loop through each epsilon
 for epsilon = min(pval):stepsize:max(pval)
     
-    %find cross validation predictions. Any 
+    %find cross validation predictions. Any probability in pval less then epsilon labeled as an anomaly
     cvprediction = pval < epsilon;
     
     %calculate true positives
